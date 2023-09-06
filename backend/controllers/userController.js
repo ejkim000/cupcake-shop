@@ -6,7 +6,7 @@ const User = require('../models/userModel');
 // generate JWT : https://jwt.io/
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: '30d'
+        expiresIn: '7d' // expired in 7 days
     })
 }
 
@@ -74,13 +74,15 @@ const loginUser = asyncHandler(async(req, res) => {
 })
 
 // @desc Get user data
-// @route GET /api/users/user
+// @route GET /api/users/me
 // @access Private
-const getUser = asyncHandler( async (req, res) => {
-    
+const getMe = asyncHandler( async (req, res) => {
+    // get req.user from authMiddleware
+    res.status(200).json(req.user);
 })
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getMe
 }
