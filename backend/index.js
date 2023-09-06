@@ -8,4 +8,15 @@ const color = require('colors');
 const connectDB = require('./config/db');
 connectDB();
 
+// MIDDLE WARE
+// for req.body
+app.use(express.json()); 
+// for req.parmas later change extended true for picture upload 
+app.use(express.urlencoded({ extended : false })); 
+
+// ROUTES
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
+
+// LISTEN
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`.magenta.underline));
