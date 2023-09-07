@@ -71,6 +71,7 @@ nav {
 
 .header ul li {
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .header ul li a {
@@ -91,6 +92,7 @@ nav {
 .logo img {
   margin-top: 5px;
   height: 80px;
+  cursor: pointer;
 }
 .dropdown-content {
   display: none !important;

@@ -13,7 +13,7 @@ const initialState = {
   message: '',
 };
 
-//Signup user
+//SIGNUP
 export const signup = createAsyncThunk(
   'auth/signup',
   async (user, thunkAPI) => {
@@ -25,40 +25,47 @@ export const signup = createAsyncThunk(
         err.message ||
         err.toString();
 
-        return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
+// LOGOUT
+export const logout = createAsyncThunk('auth/logout', async () => {
+  await authService.logout();
+});
 
 export const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {
-        reset: (state) => {
-            state.isLoading = false;
-            state.isSuccess = false;
-            state.isError = false;
-            state.message = '';
-        },
+  name: 'auth',
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = '';
     },
-    extraReducers: (builder) => {
-        builder
-        .addCase(signup.pending,(state) => {
-            state.isLoading = true;
-        })
-        .addCase(signup.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.isSuccess = true;
-            state.user = action.payload;
-        })
-        .addCase(signup.rejected, (state, action) => {
-            state.isLoading = false;
-            state.isError = true;
-            state.user = null;
-            state.message = action.payload;
-        });
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(signup.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(signup.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(signup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.user = null;
+        state.message = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+      });
+  },
 });
 
 export const { reset } = authSlice.actions;

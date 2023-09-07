@@ -14,8 +14,13 @@ const signup = async(userData) => {
     return res.data;
 }
 
+// LOGOUT
+const logout = () => {
+    localStorage.removeItem('cupcakeshop_user');
+}
+
 const authService = {
-    signup
+    signup, logout
 }
 
 export default authService;
