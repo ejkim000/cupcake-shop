@@ -92,6 +92,25 @@ nav {
   margin-top: 5px;
   height: 80px;
 }
+.dropdown-content {
+  display: none !important;
+  z-index: 2;
+  position:absolute; 
+  top: 80px;
+  background-color: #fff;
+  border: 1px solid #f29eb0;
+  border-radius: 10px;
+  padding: 10px 20px 10px 0;
+  margin-top: 3px;
+  text-align: left;
+}
+.dropdown-content a {
+  font-size: 1rem !important;
+}
+.dropdown:hover .dropdown-content {
+  display: block !important;
+
+}
 
 .heading {
   font-size: 2rem;
@@ -114,20 +133,20 @@ nav {
   padding: 90px 30px 60px;
   background: rgba(255, 255, 255, 0.6);
 }
-.goals {
+.category {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.goal {
+.category {
   background-color: #f4f4f4;
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
 }
 
-.goal .close {
+.category .close {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -231,6 +250,16 @@ nav {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+footer {
+  background-color: #F9E2C7;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 10px;
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0;
 }
 
 @keyframes spin {

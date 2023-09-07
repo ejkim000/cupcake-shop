@@ -21,10 +21,14 @@ function Header() {
           <li>
             <a href="#">Filling</a>
           </li>
-          <li>
+          <li className='dropdown'>
             <button className="btn round">
               <FaRegUser />
             </button>
+            <ul className='dropdown-content'>
+                <li><a href="#">Signup</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
           </li>
         </ul>
       </nav>
