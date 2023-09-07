@@ -37,21 +37,25 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
   border-bottom: 1px solid #F29EB0;
-  margin-bottom: 60px;
   background-color: #FFF2FA;
-  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+nav {
+  max-width: 1000px;
+  padding: 12px 20px 12px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header ul {
@@ -67,6 +71,8 @@ h3 {
 .header ul li a {
   display: flex;
   align-items: center;
+  color: #513724;
+  font-size: 20px;
 }
 
 .header ul li a:hover {
@@ -78,6 +84,7 @@ h3 {
 }
 
 .logo img {
+  margin-top: 5px;
   height: 80px;
 }
 
@@ -88,6 +95,9 @@ h3 {
   padding: 0 20px;
 }
 
+.heading h1 {
+  color: #513724;
+}
 .heading p {
   color: #828282;
 }
@@ -159,6 +169,11 @@ h3 {
 
 .btn svg {
   margin-right: 8px;
+}
+
+.round {
+  border-radius: 50%;
+  padding: 15px 10px 15px 16px;
 }
 
 .btn-reverse {
