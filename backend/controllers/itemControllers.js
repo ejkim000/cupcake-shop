@@ -26,7 +26,7 @@ const setItem = asyncHandler(async (req, res) => {
     category: req.body.category,
     name: req.body.name,
     picture: req.body.picture,
-    desc: req.body.desc
+    desc: req.body.desc,
   });
 
   res.status(200).json(item);
@@ -47,6 +47,13 @@ const updateItem = asyncHandler(async (req, res) => {
     throw new Error('Wrong access');
   }
 
+  const foundItem = await Item.findById(req.params.id);
+
+  if (!foundItem) {
+    res.status(400);
+    throw new Error('The item was not found');
+  }
+
   const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
     new: true, // if don't exist, then create one
   });
@@ -57,27 +64,27 @@ const updateItem = asyncHandler(async (req, res) => {
 // @desc delete item
 // @route DELETTE '/api/items/:id'
 // @access Public for now, later make Private for admin
-const deleteItem = asyncHandler(async(req, res) => {
-    if (!req.params.id) {
-        res.status(400);
-        throw new Error('Wrong access');
-      }
-    
-      const item = await Item.findById(req.params.id);
+const deleteItem = asyncHandler(async (req, res) => {
+  if (!req.params.id) {
+    res.status(400);
+    throw new Error('Wrong access');
+  }
 
-      if (!item) {
-        res.status(400);
-        throw new Error('No item found');
-      }
+  const foundItem = await Item.findById(req.params.id);
 
-      await item.deleteOne();
+  if (!foundItem) {
+    res.status(400);
+    throw new Error('No item found');
+  }
 
-      res.status(200).json({ id: req.params.id });
+  await foundItem.deleteOne();
+
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
   getItems,
   setItem,
   updateItem,
-  deleteItem
+  deleteItem,
 };
