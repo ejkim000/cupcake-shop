@@ -19,8 +19,7 @@ const setItem = asyncHandler(async (req, res) => {
     !req.body.category ||
     !req.body.name ||
     !req.body.picture ||
-    !req.body.desc ||
-    !req.body.size
+    !req.body.desc
   ) {
     res.status(400);
     throw new Error('Please add all item information');
@@ -29,8 +28,7 @@ const setItem = asyncHandler(async (req, res) => {
     category: req.body.category,
     name: req.body.name,
     picture: req.body.picture,
-    desc: req.body.desc,
-    size: req.body.size,
+    desc: req.body.desc
   });
 
   res.status(200).json(item);
@@ -45,8 +43,7 @@ const updateItem = asyncHandler(async (req, res) => {
     !req.body.category ||
     !req.body.name ||
     !req.body.picture ||
-    !req.body.desc ||
-    !req.body.size
+    !req.body.desc
   ) {
     res.status(400);
     throw new Error('Wrong access');

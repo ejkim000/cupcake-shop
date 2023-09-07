@@ -6,7 +6,7 @@ const sizeSchema = mongoose.Schema ({
         required: true,
         ref: 'Item'
     },
-    name: {
+    size: {
         type: String,
         required: [true, 'Please add size name']
     },

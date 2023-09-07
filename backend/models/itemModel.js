@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema ({
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Category'
+        type: String,
+        required: [true, 'Please add item category']
     },
     name: {
         type: String,
@@ -18,11 +17,6 @@ const itemSchema = mongoose.Schema ({
         type: String,
         required: [true, 'Please add item description']
     },
-    size: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Size'
-    }
 },
 {
     timestamps : true
