@@ -48,8 +48,10 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #F29EB0;
   margin-bottom: 60px;
+  background-color: #FFF2FA;
+  padding: 10px 20px;
 }
 
 .header ul {
@@ -73,6 +75,10 @@ h3 {
 
 .header ul li a svg {
   margin-right: 5px;
+}
+
+.logo img {
+  height: 80px;
 }
 
 .heading {
@@ -137,9 +143,9 @@ h3 {
 
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: 1px solid #F29EB0;
   border-radius: 5px;
-  background: #000;
+  background: #F29EB0;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
@@ -157,7 +163,7 @@ h3 {
 
 .btn-reverse {
   background: #fff;
-  color: #000;
+  color: #F29EB0;
 }
 
 .btn-block {
