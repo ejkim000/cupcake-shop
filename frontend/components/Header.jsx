@@ -26,8 +26,8 @@ function Header() {
               <FaRegUser />
             </button>
             <ul className='dropdown-content'>
-                <li><a href="#">Signup</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
           </li>
         </ul>
