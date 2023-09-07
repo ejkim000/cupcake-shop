@@ -5,7 +5,7 @@ const {
   setSize,
   updateSize,
   deleteSize,
-} = require('../controllers/itemControllers');
+} = require('../controllers/sizeControllers');
 
 router.route('/').get(getSizes).post(setSize);
 router.route('/:id').put(updateSize).delete(deleteSize);

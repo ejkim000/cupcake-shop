@@ -9,7 +9,7 @@ const itemSchema = mongoose.Schema ({
         type: String,
         required: [true, 'Please add item name']
     },
-    pciture: {
+    picture: {
         type: String,
         required: [true, 'Please add item picture']
     },

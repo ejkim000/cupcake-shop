@@ -1,7 +1,5 @@
 const asyncHandler = require('express-async-handler');
 const Item = require('../models/itemModel');
-const Category = require('../models/categoryModel');
-const Size = require('../models/categorySize');
 
 // @desc Get items
 // @route GET /api/items/
