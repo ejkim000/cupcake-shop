@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended : false }));
 
 // ROUTES
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/items', require('./routes/itemRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
 
 // LISTEN

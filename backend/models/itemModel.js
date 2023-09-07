@@ -15,7 +15,7 @@ const itemSchema = mongoose.Schema ({
         required: [true, 'Please add item picture']
     },
     desc: {
-        type: Text,
+        type: String,
         required: [true, 'Please add item description']
     },
     size: {
