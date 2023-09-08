@@ -1,6 +1,6 @@
 import logo from '../src/assets/logo.png';
 import { FaRegUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 
@@ -26,16 +26,17 @@ function Header() {
         </div>
         <ul>
           <li>
-            <a href="#">Design</a>
+            <Link to="/items" state={{ category: "design" }}>Design</Link>
+            {/* <a href="/items/design">Design</a> */}
           </li>
           <li>
-            <a href="#">BaseCake</a>
+            <a href="/items/cake">BaseCake</a>
           </li>
           <li>
-            <a href="#">Frosting</a>
+            <a href="/items/frosting">Frosting</a>
           </li>
           <li>
-            <a href="#">Filling</a>
+            <a href="/items/filling">Filling</a>
           </li>
           <li className="dropdown">
             <button className="btn round">
