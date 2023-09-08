@@ -1,4 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+
 function Home() {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate('/items/design');
+  };
   return (
     <>
       <section className="heading">
@@ -11,7 +17,11 @@ function Home() {
           <h2>Anniversary</h2>
           <h2>Mother&apos;s Day</h2>
           <h2>Special Event</h2>
-          <h2><button className="btn lg center">Make Your Own Cupcake</button></h2>
+          <h2>
+            <button className="btn lg center" onClick={onClick}>
+              Make Your Own Cupcakes
+            </button>
+          </h2>
         </div>
       </section>
     </>
