@@ -1,20 +1,17 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getItems, reset } from '../features/item/itemSlice';
 import ItemCard from '../components/ItemCard';
 import Loading from '../components/Loading';
 
 function Items() {
   const dispatch = useDispatch();
+  const params = useParams();
+  const category = !params.category ? 'design': params.category;
   const { items, isLoading, isError, message } = useSelector(
     (state) => state.items
   );
-  // Receive props from hearder Link
-  const location = useLocation();
-  const category = (location.state && location.state.category)
-    ? location.state.category
-    : 'design';
 
   useEffect(() => {
     if (isError) {

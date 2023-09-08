@@ -26,28 +26,16 @@ function Header() {
         </div>
         <ul>
           <li>
-            <Link to="/items" state={{ category: 'design' }}>
-              Design
-            </Link>
-            {/* <a href="/items/design">Design</a> */}
+            <Link to="/items/design">Design</Link>
           </li>
           <li>
-            <Link to="/items" state={{ category: 'cake' }}>
-              BaseCake
-            </Link>
-            {/* <a href="/items/cake">BaseCake</a> */}
+            <Link to="/items/cake">BaseCake</Link>
           </li>
           <li>
-            <Link to="/items" state={{ category: 'frosting' }}>
-              Frosting
-            </Link>
-            {/* <a href="/items/frosting">Frosting</a> */}
+            <Link to="/items/frosting">Frosting</Link>
           </li>
           <li>
-            <Link to="/items" state={{ category: 'filling' }}>
-              Filling
-            </Link>
-            {/* <a href="/items/filling">Filling</a> */}
+            <Link to="/items/filling">Filling</Link>
           </li>
           <li className="dropdown">
             <button className="btn round">
