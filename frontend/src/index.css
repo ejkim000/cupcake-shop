@@ -223,10 +223,12 @@ nav {
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
+  font-size: 1.1rem;
 }
 
 .form-group label {
   text-align: left;
+  font-weight: 600;
   display: block;
   margin: 0 0 5px 3px;
 }
