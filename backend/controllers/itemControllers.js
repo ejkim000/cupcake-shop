@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Item = require('../models/itemModel');
+const Size = require('../models/sizeModel');
 
 // @desc Get items
 // @route GET /api/items/
@@ -82,9 +83,35 @@ const deleteItem = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
+// @desc get an item information with size(price) information
+// @route GET /api/items/detail
+// @access Public
+const getItemWithSizes = asyncHandler(async (req, res) => {
+  console.log(req.params.id);
+  if (!req.params.id) {
+    res.status(400);
+    throw new Error('Wrong access');
+  }
+
+  const foundItem = await Item.findById(req.params.id);
+  if (!foundItem) {
+    res.status(400);
+    throw new Error('No item found');
+  }
+
+  const foundSizes = await Size.find({ item: foundItem._id });
+  if (!foundSizes) {
+    res.status(400);
+    throw new Error('No sizes found');
+  }
+
+  res.status(200).json({ item: foundItem, sizes: foundSizes });
+});
+
 module.exports = {
   getItems,
   setItem,
   updateItem,
   deleteItem,
+  getItemWithSizes,
 };
