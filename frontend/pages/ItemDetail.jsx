@@ -1,12 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import AddToCartForm from '../components/AddToCartForm';
 
 function ItemDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
+  if (!id) {
+    navigate('/');
+  }
+    const arr = id.split('_');
+    const name = arr[0];
+    const item_id = arr[1];
+
+
   return (
     <>
-      <section className='heading'>
-      <h1>Design: {id}</h1>
+      <section className="heading">
+        <h1>{name}</h1>
       </section>
       <section className="item-detail">
         <div className="detail-image">
@@ -21,7 +30,7 @@ function ItemDetail() {
           </p>
         </div>
         <div className="detail-options">
-          <AddToCartForm />
+          <AddToCartForm name={name} id={item_id} />
         </div>
       </section>
     </>

@@ -5,7 +5,7 @@ function ItemCard({ item }) {
   const navigate = useNavigate();
   const { _id, name, picture } = item;
   const onClick = () => {
-    navigate(`/item-detail/${_id}`);
+    navigate(`/item-detail/${name}_${_id}`);
   };
   return (
     <div className="item-card">
