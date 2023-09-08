@@ -97,7 +97,7 @@ nav {
 .dropdown-content {
   display: none !important;
   z-index: 2;
-  position:absolute; 
+  position: absolute;
   top: 80px;
   right: 10px;
   background-color: #fff;
@@ -112,7 +112,6 @@ nav {
 }
 .dropdown:hover .dropdown-content {
   display: block !important;
-
 }
 
 .heading {
@@ -153,14 +152,14 @@ nav {
 
 .item-card {
   background-color: #ffffff;
-  width: 90%
+  width: 90%;
 }
 
 .item-card img {
   width: 96%;
 }
 
-.item-card h3{
+.item-card h3 {
   font-size: 1.5rem;
   height: 4rem;
 }
@@ -174,7 +173,8 @@ nav {
   flex-wrap: wrap;
 }
 
-.detail-image, .detail-options {
+.detail-image,
+.detail-options {
   width: 50%;
   max-width: 500px;
   padding: 20px 10px;
@@ -205,7 +205,7 @@ nav {
 
 .form,
 .content {
-  width: 70%;
+  width: 80%;
   max-width: 500px;
   margin: 0 auto 50px;
 }
@@ -296,13 +296,13 @@ nav {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #89E0E0 transparent #a5a5a5 transparent;
+  border-color: #89e0e0 transparent #a5a5a5 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
 
 footer {
-  background-color: #F9E2C7;
+  background-color: #f9e2c7;
   width: 100%;
   margin: 20px 0 0;
   padding: 10px;

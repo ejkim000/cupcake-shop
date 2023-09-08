@@ -13,7 +13,7 @@ function ItemCard({ item }) {
       <img src={placeholder} alt={name} />
       <h3 className="vertical-center">{name}</h3>
       <button className="btn form" onClick={onClick}>
-        See Detail
+        Show Details
       </button>
     </div>
   );
