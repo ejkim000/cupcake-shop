@@ -3,7 +3,7 @@ import placeholder from '../src/assets/cupcake.png';
 
 function ItemCard({ item }) {
   const navigate = useNavigate();
-  const { _id, name, picture, desc } = item;
+  const { _id, name, picture } = item;
   const onClick = () => {
     navigate(`/item-detail/${_id}`);
   };
@@ -12,7 +12,6 @@ function ItemCard({ item }) {
       {/* <img src={picture} alt={name} /> */}
       <img src={placeholder} alt={name} />
       <h3 className="vertical-center">{name}</h3>
-      <p>{desc.slice(0, 70)}...</p>
       <button className="btn form" onClick={onClick}>
         See Detail
       </button>

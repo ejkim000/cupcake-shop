@@ -164,11 +164,6 @@ nav {
   font-size: 1.5rem;
   height: 4rem;
 }
-.item-card p {
-  text-align: left;
-  height: 80px;
-  font-size: 0.9rem;
-}
 
 .vertical-center {
   display: flex;

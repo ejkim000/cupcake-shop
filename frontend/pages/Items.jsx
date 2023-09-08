@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { getItems, reset } from '../features/item/itemSlice';
+import { useParams } from 'react-router-dom';
+import { getItems } from '../features/item/itemSlice';
 import ItemCard from '../components/ItemCard';
 import Loading from '../components/Loading';
 
@@ -27,7 +27,7 @@ function Items() {
   return (
     <>
       <section className="heading">
-        <h1>{category}</h1>
+        <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
       </section>
       <section className="container-center">
         <div className="item-card-container">
