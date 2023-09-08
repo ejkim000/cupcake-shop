@@ -136,7 +136,14 @@ nav {
   padding: 90px 30px 60px;
   background: rgba(255, 255, 255, 0.6);
 }
+
+.container-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .item-card-container {
+  max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
@@ -155,7 +162,7 @@ nav {
 
 .item-card h3{
   font-size: 1.5rem;
-  height: 4.5rem;
+  height: 4rem;
 }
 .item-card p {
   text-align: left;
@@ -172,7 +179,8 @@ nav {
 .form,
 .content {
   width: 70%;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 0 auto 70px;
 }
 
 .form-group {

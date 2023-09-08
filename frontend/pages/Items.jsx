@@ -11,7 +11,7 @@ function Items(props) {
     (state) => state.items
   );
   // Receive props from hearder Link
-  const location = useLocation()
+  const location = useLocation();
   const { category } = location.state;
 
   useEffect(() => {
@@ -28,15 +28,17 @@ function Items(props) {
   return (
     <>
       <section className="heading">
-        <h1>{ category }</h1>
+        <h1>{category}</h1>
       </section>
-      <section className="item-card-container">
-        {items &&
-          items
-            .filter((item) => item.category === category)
-            .map((i) => {
-              return <ItemCard key={i._id} item={i} />
-            })}
+      <section className="container-center">
+        <div className="item-card-container">
+          {items &&
+            items
+              .filter((item) => item.category === category)
+              .map((i) => {
+                return <ItemCard key={i._id} item={i} />;
+              })}
+        </div>
       </section>
     </>
   );
