@@ -1,7 +1,9 @@
 function Loading() {
   return (
-    <div>Loading</div>
-  )
+    <div className="loadingSpinnerContainer">
+      <div className="loadingSpinner"></div>
+    </div>
+  );
 }
 
-export default Loading
+export default Loading;

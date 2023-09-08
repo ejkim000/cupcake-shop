@@ -15,18 +15,17 @@ function AddToCartForm({ name, id }) {
   const [subTotal, setSubTotal] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
 
-  const savedOptions = JSON.parse(
-    localStorage.getItem('cupcakeshop-selected-options')
-  );
-
-  console.log(savedOptions);
-
   const dispatch = useDispatch();
   const { items, isLoading, isError, message } = useSelector(
     (state) => state.items
   );
   const { sizes, isLoadingS, isErrorS, messageS } = useSelector(
     (state) => state.sizes
+  );
+
+  // get save options from localStorage
+  const savedOptions = JSON.parse(
+    localStorage.getItem('cupcakeshop-selected-options')
   );
 
   // set all the options by filtering state value array
