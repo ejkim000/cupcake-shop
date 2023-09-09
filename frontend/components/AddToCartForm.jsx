@@ -50,6 +50,19 @@ function AddToCartForm({ name, id }) {
   };
 
   useEffect(() => {
+    const size = sizes.filter((s) => s._id === selectedSize);
+
+    if (size && size.length > 0) setSubTotal(size[0].price);
+
+    // save selected options in the local storage
+    localStorage.setItem(
+      'cupcakeshop-selected-options',
+      JSON.stringify(formData)
+    );
+  }, [formData, selectedSize]);
+
+
+  useEffect(() => {
     if (isError) {
       console.log(message);
     }
@@ -60,16 +73,7 @@ function AddToCartForm({ name, id }) {
     dispatch(getItems());
     dispatch(getSizes());
 
-    const size = sizes.filter((s) => s._id === selectedSize);
-
-    if (size && size.length > 0) setSubTotal(size[0].price);
-
-    // save selected options in the local storage
-    localStorage.setItem(
-      'cupcakeshop-selected-options',
-      JSON.stringify(formData)
-    );
-  }, [selectedSize, dispatch, isError, isErrorS, formData]);
+  }, [dispatch, isError, isErrorS, message, messageS]);
 
   if (isLoading || isLoadingS) {
     return <Loading />;
