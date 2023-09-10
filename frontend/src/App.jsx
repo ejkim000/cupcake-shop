@@ -9,6 +9,7 @@ import Login from '../pages/Login';
 import MyAccount from '../pages/MyAccount';
 import Items from '../pages/Items';
 import ItemDetail from '../pages/ItemDetail';
+import Cart from '../pages/Cart';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/myaccount" element={<MyAccount />} />
             <Route path="/items/:category" element={<Items />} />
             <Route path="/item-detail/:id" element={<ItemDetail />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
         </div>
