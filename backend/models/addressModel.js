@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const addressSchema = mongoose.Schema ({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     name: {
         type: String,
         required: [true, 'Please add a name']
@@ -24,6 +29,10 @@ const addressSchema = mongoose.Schema ({
     zipcode: {
         type: String,
         required: [true, 'Please add zipcode']
+    },
+    default: {
+        type: Boolean,
+        default: false
     },
 },
 {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema ({
-    orderNo: {
+    order_no: {
         type: String,
         required: [true, 'Please add an order number']
     },
@@ -10,43 +10,11 @@ const orderSchema = mongoose.Schema ({
         required: true,
         ref: 'User'
     },
-    orderDetail: [{
-        design: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Design'
-        },
-        cake: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Cake'
-        },
-        frosting: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Frosting'
-        },
-        filling: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Filling'
-        },
-        size: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Size'
-        },
-        qty: {
-            type: Number,
-            required: true,
-            default: 1
-        },
-        subTotal: {
-            type: Number,
-            required: true,
-            default: 0
-        },
-    }],
+    order_items:{
+        type: Array,
+        required: true,
+        default: []
+    },
     total: {
         type: Number,
         required: true,
@@ -61,11 +29,6 @@ const orderSchema = mongoose.Schema ({
         type: Number,
         required: true,
         default: 0
-    },
-    transaction: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Transaction'
     },
     status: {
         type: String,
