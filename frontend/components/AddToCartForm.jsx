@@ -1,10 +1,17 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSizes } from '../features/size/sizeSlice';
 import { getItems } from '../features/item/itemSlice';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Loading from '../components/Loading';
 
-function AddToCartForm({ name, id }) {
+function AddToCartForm({ id }) {
+  AddToCartForm.propTypes = {
+    id: PropTypes.node.isRequired,
+  };
+
   const [formData, setFormData] = useState({
     design: id,
     size: '',
@@ -13,7 +20,10 @@ function AddToCartForm({ name, id }) {
     filling: '',
   });
   const [subTotal, setSubTotal] = useState(0);
-  const [selectedSize, setSelectedSize] = useState('');
+  // Get save cart from localStorage
+  const savedCart = JSON.parse(localStorage.getItem('cart'));
+
+  const [cart, setCart] = useState(savedCart.length > 0 ? savedCart : []);
 
   const dispatch = useDispatch();
   const { items, isLoading, isError, message } = useSelector(
@@ -23,44 +33,58 @@ function AddToCartForm({ name, id }) {
     (state) => state.sizes
   );
 
-  // get save options from localStorage
-  const savedOptions = JSON.parse(
-    localStorage.getItem('cupcakeshop-selected-options')
-  );
-
   // set all the options by filtering state value array
   const designSizes = sizes.filter((size) => size.item.toString() === id);
   const cakes = items.filter((item) => item.category === 'cake');
   const frostings = items.filter((item) => item.category === 'frosting');
   const fillings = items.filter((item) => item.category === 'filling');
 
+  const navigate = useNavigate();
+
   const onSubmit = (e) => {
-    e.preventDeafault();
+    e.preventDefault();
+
+    // Get saved options from localStorage
+    const savedOptions = JSON.parse(localStorage.getItem('selected-options'));
+
+    if (
+      !savedOptions.cake ||
+      !savedOptions.design ||
+      !savedOptions.frosting ||
+      !savedOptions.size
+    ) {
+      toast.error('Please select all options');
+    } else {
+      setCart((prev) => [...prev, savedOptions]);
+    }
   };
 
   const onChange = (e) => {
+    // Add sub_total as well when select a size
     if (e.target.name === 'size') {
-      setSelectedSize(e.target.value);
-    }
+      const size = sizes.filter((s) => s._id === e.target.value);
 
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+      if (size && size.length > 0) {
+        setSubTotal(size[0].price);
+        // add sub_total to form data
+        setFormData((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+          sub_total: size[0].price,
+        }));
+      }
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value,
+      }));
+    }
   };
 
   useEffect(() => {
-    const size = sizes.filter((s) => s._id === selectedSize);
-
-    if (size && size.length > 0) setSubTotal(size[0].price);
-
     // save selected options in the local storage
-    localStorage.setItem(
-      'cupcakeshop-selected-options',
-      JSON.stringify(formData)
-    );
-  }, [formData, selectedSize]);
-
+    localStorage.setItem('selected-options', JSON.stringify(formData));
+  }, [formData]);
 
   useEffect(() => {
     if (isError) {
@@ -72,8 +96,16 @@ function AddToCartForm({ name, id }) {
 
     dispatch(getItems());
     dispatch(getSizes());
-
   }, [dispatch, isError, isErrorS, message, messageS]);
+
+  useEffect(() => {
+    // Save item to localStorage cart
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    console.log(cart, cart.length);
+    // navigate to '/cart'
+    cart.length > savedCart.length && navigate('/cart');
+  }, [cart, savedCart, navigate]);
 
   if (isLoading || isLoadingS) {
     return <Loading />;
@@ -89,7 +121,11 @@ function AddToCartForm({ name, id }) {
         </div> */}
         <div className="form-group">
           <label className="form-label">Size</label>
-          <select name="size" value={savedOptions.size} onChange={onChange} className="form-control">
+          <select
+            name="size"
+            value={formData.size}
+            onChange={onChange}
+            className="form-control">
             <option value="">Please select size</option>
             {designSizes.map((s) => (
               <option key={s._id} value={s._id}>
@@ -100,7 +136,11 @@ function AddToCartForm({ name, id }) {
         </div>
         <div className="form-group">
           <label className="form-label">Cake</label>
-          <select name="cake" value={savedOptions.cake} onChange={onChange} className="form-control">
+          <select
+            name="cake"
+            value={formData.cake}
+            onChange={onChange}
+            className="form-control">
             <option value="">Please select filling</option>
             {cakes &&
               cakes
@@ -114,7 +154,11 @@ function AddToCartForm({ name, id }) {
         </div>
         <div className="form-group">
           <label className="form-label">Frosting</label>
-          <select name="frosting" value={savedOptions.frosting} onChange={onChange} className="form-control">
+          <select
+            name="frosting"
+            value={formData.frosting}
+            onChange={onChange}
+            className="form-control">
             <option value="">Please select frosting</option>
             {frostings &&
               frostings
@@ -128,7 +172,11 @@ function AddToCartForm({ name, id }) {
         </div>
         <div className="form-group">
           <label className="form-label">Filling</label>
-          <select name="filling" value={savedOptions.filling} onChange={onChange} className="form-control">
+          <select
+            name="filling"
+            value={formData.filling}
+            onChange={onChange}
+            className="form-control">
             <option value="">No Filling</option>
             {fillings &&
               fillings
