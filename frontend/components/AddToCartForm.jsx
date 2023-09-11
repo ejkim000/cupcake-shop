@@ -7,13 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../components/Loading';
 
-function AddToCartForm({ id }) {
+function AddToCartForm({ id, name }) {
   AddToCartForm.propTypes = {
     id: PropTypes.node.isRequired,
+    name: PropTypes.node.isRequired,
   };
 
   const [formData, setFormData] = useState({
-    design: id,
+    design: id + '_' + name,
     size: '',
     cake: '',
     frosting: '',
@@ -23,7 +24,7 @@ function AddToCartForm({ id }) {
   // Get save cart from localStorage
   const savedCart = JSON.parse(localStorage.getItem('cart'));
 
-  const [cart, setCart] = useState(savedCart.length > 0 ? savedCart : []);
+  const [cart, setCart] = useState((savedCart && savedCart.length > 0) ? savedCart : []);
 
   const dispatch = useDispatch();
   const { items, isLoading, isError, message } = useSelector(
@@ -62,7 +63,8 @@ function AddToCartForm({ id }) {
   const onChange = (e) => {
     // Add sub_total as well when select a size
     if (e.target.name === 'size') {
-      const size = sizes.filter((s) => s._id === e.target.value);
+      const selectedSizeId = e.target.value.split('_')[0];
+      const size = sizes.filter((s) => s._id === selectedSizeId);
 
       if (size && size.length > 0) {
         setSubTotal(size[0].price);
@@ -102,7 +104,6 @@ function AddToCartForm({ id }) {
     // Save item to localStorage cart
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    console.log(cart, cart.length);
     // navigate to '/cart'
     cart.length > savedCart.length && navigate('/cart');
   }, [cart, savedCart, navigate]);
@@ -128,7 +129,7 @@ function AddToCartForm({ id }) {
             className="form-control">
             <option value="">Please select size</option>
             {designSizes.map((s) => (
-              <option key={s._id} value={s._id}>
+              <option key={s._id} value={`${s._id}_${s.size}`}>
                 {s.size}
               </option>
             ))}
@@ -146,7 +147,7 @@ function AddToCartForm({ id }) {
               cakes
                 // .filter((cake) => cake.size === selectedSize)
                 .map((item) => (
-                  <option key={item._id} value={item._id}>
+                  <option key={item._id} value={`${item._id}_${item.name}`}>
                     {item.name}
                   </option>
                 ))}
@@ -164,7 +165,7 @@ function AddToCartForm({ id }) {
               frostings
                 // .filter((cake) => cake.size === selectedSize)
                 .map((item) => (
-                  <option key={item._id} value={item._id}>
+                  <option key={item._id} value={`${item._id}_${item.name}`}>
                     {item.name}
                   </option>
                 ))}
@@ -182,7 +183,7 @@ function AddToCartForm({ id }) {
               fillings
                 // .filter((cake) => cake.size === selectedSize)
                 .map((item) => (
-                  <option key={item._id} value={item._id}>
+                  <option key={item._id} value={`${item._id}_${item.name}`}>
                     {item.name}
                   </option>
                 ))}
