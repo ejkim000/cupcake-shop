@@ -1,7 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Order = require('../models/orderModel');
 const Transaction = require('../models/transactionModel');
-const Address = require('../models/addressModel');
 
 // @desc Get orders
 // @route GET /api/orders/

@@ -10,6 +10,7 @@ import MyAccount from '../pages/MyAccount';
 import Items from '../pages/Items';
 import ItemDetail from '../pages/ItemDetail';
 import Cart from '../pages/Cart';
+import Order from '../pages/Order';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/items/:category" element={<Items />} />
             <Route path="/item-detail/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/order" element={<Order />} />
           </Routes>
           <Footer />
         </div>
