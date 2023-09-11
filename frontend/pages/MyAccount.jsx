@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 function MyAccount() {
 
   const navigate = useNavigate();
-
   const updateAccount = () => {
     navigate('/myaccount/update');
   };
