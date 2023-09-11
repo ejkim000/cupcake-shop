@@ -269,7 +269,7 @@ nav {
 }
 
 /** ORDER **/
-.order {
+.flex-space-even {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -281,6 +281,47 @@ nav {
   width: 500px;
 }
 
+/** Checkout **/
+.main-container {
+  padding: 40px 40px 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/** My Account **/
+
+.grid-space-even {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.myaccount {
+  padding: 30px;
+}
+.myaccount h3 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.myaccount p {
+  font-size: 1.1rem;
+  text-align: left;
+  margin: 15px;
+}
+.myaccount button {
+  margin: 20px auto;
+}
+.myaccount span {
+  font-weight: 700;
+}
+.box {
+  padding:15px;
+  border: 1px solid #513724;
+  border-radius: 10px;
+}
 
 /* FORM */
 .form,

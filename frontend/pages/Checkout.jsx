@@ -28,7 +28,7 @@ function Checkout() {
         <h1>Checkout</h1>
         <p>Please select your payment option</p>
       </section>
-      <section className="form">
+      <section className="form main-container">
         <div className="form-group">
           <button onClick={onSubmit} type="submit" className="btn btn-block">
             PayPal

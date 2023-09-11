@@ -31,7 +31,7 @@ function Order() {
         <h1>My Order</h1>
         <p>Please fill out information</p>
       </section>
-      <section className="order">
+      <section className="flex-space-even">
         {/* <OrderItems /> */}
         <ShippingAddress />
         <BillingAddress />

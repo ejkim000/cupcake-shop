@@ -43,7 +43,7 @@ function Header() {
             </button>
             <ul className="dropdown-content">
               <li>
-                <a href="/cart">Shopping Cart</a>
+                <a href="/cart">My Cart</a>
               </li>
               {user ? (
                 <>
