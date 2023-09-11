@@ -50,7 +50,7 @@ function CartItem({ item, index }) {
         <p>Qty: 1</p>
         <p>Price: ${item.sub_total}</p>
         <p>
-          <button onClick={onRemove} className="btn small">
+          <button onClick={onRemove} className="btn reverse small">
             Remove
           </button>
         </p>

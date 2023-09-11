@@ -332,9 +332,11 @@ nav {
   text-align: center;
 }
 
-.btn-reverse {
+.btn.reverse {
   background: #fff;
   color: #f29eb0;
+  border: 2px solid #f29eb0;
+
 }
 
 .btn.small {
