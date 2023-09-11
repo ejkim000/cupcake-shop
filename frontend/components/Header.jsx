@@ -42,6 +42,9 @@ function Header() {
               <FaRegUser />
             </button>
             <ul className="dropdown-content">
+              <li>
+                <a href="/cart">Shopping Cart</a>
+              </li>
               {user ? (
                 <>
                   <li>
