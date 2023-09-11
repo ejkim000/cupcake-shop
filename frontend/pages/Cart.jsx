@@ -63,7 +63,7 @@ function Cart() {
           </div>
           <div className="order-link">
             <Link to="/order" className="btn btn-block">
-              Order
+              Order Now
             </Link>
           </div>
         </section>

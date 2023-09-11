@@ -267,6 +267,21 @@ nav {
   font-size: 1.25rem;
   margin: 0 auto;
 }
+
+/** ORDER **/
+.order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* align-content: center; */
+  align-items: flex-start;
+}
+
+.order-form {
+  width: 500px;
+}
+
+
 /* FORM */
 .form,
 .content {
