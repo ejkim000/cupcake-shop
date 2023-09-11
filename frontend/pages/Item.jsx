@@ -10,25 +10,25 @@ function Item() {
     navigate('/');
   }
   const item = state;
-  const flexDir = item.category === 'design'? '': ' flex-row';
+  const flexDir = item.category === 'design' ? '' : ' flex-row';
 
   return (
     <>
       <section className="heading">
         <h1>{item.name}</h1>
       </section>
-      <section className='item-detail'>
+      <section className="item-detail">
         <div className={`detail-desc${flexDir}`}>
           <img src="../src/assets/cupcake.png" alt="cupcake" />
           <div>
             <p>{item.desc}</p>
-            <p>
-              {item.category !== 'design' && (
-                <div className="form-group">
-                  <Link to="/items/design" className="btn form">Go To Select Design</Link>
-                </div>
-              )}
-            </p>
+            {item.category !== 'design' && (
+              <p className="form-group">
+                <Link to="/items/design" className="btn form">
+                  Go To Select Design
+                </Link>
+              </p>
+            )}
           </div>
         </div>
         {item.category === 'design' && (
