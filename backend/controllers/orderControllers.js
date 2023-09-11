@@ -1,6 +1,6 @@
-const asyncHandler = require('express-async-handler');
-const Order = require('../models/orderModel');
+const Order = require('../models/myOrderModel');
 const Transaction = require('../models/transactionModel');
+const asyncHandler = require('express-async-handler');
 
 // @desc Get orders
 // @route GET /api/orders/
