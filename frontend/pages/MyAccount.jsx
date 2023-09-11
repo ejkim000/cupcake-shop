@@ -1,4 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 function MyAccount() {
+
+  const navigate = useNavigate();
+
+  const updateAccount = () => {
+    navigate('/myaccount/update');
+  };
+
   return (
     <>
       <section className="heading">
@@ -10,7 +19,7 @@ function MyAccount() {
           <div className="box">
           <p>Name: <span>Honey Dew</span></p>
           <p>Email: <span>honeydew@email.com</span></p>
-          <button className="btn small">Update Information</button>
+          <button onClick={updateAccount} className="btn small">Update Information</button>
           </div>
         </div>
         <div className="myaccount">

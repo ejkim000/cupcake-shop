@@ -13,6 +13,7 @@ import Order from '../pages/Order';
 import Item from '../pages/Item';
 import Checkout from '../pages/Checkout';
 import OrderComplete from '../pages/OrderComplete';
+import UpdateAccount from '../pages/UpdateAccount';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/myaccount" element={<MyAccount />} />
+            <Route path="/myaccount/update" element={<UpdateAccount />} />
             <Route path="/items/:category" element={<Items />} />
             <Route path="/item/:id" element={<Item />} />
             <Route path="/cart" element={<Cart />} />
