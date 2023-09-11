@@ -1,17 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import ShippingAddress from '../components/ShippingAddress';
-import BillingAddress from '../components/BillingAddress';
-// import OrderItems from '../components/OrderItems';
 
-function Order() {
+function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
-  const onCheckout = () => {
-    navigate('/checkout');
+  const onSubmit = () => {
+    navigate('/order/complete');
   };
 
   useEffect(() => {
@@ -28,18 +25,18 @@ function Order() {
   return (
     <>
       <section className="heading">
-        <h1>My Order</h1>
-        <p>Please fill out information</p>
-      </section>
-      <section className="order">
-        {/* <OrderItems /> */}
-        <ShippingAddress />
-        <BillingAddress />
+        <h1>Checkout</h1>
+        <p>Please select your payment option</p>
       </section>
       <section className="form">
         <div className="form-group">
-          <button onClick={onCheckout} type="submit" className="btn btn-block">
-            Checkout
+          <button onClick={onSubmit} type="submit" className="btn btn-block">
+            PayPal
+          </button>
+        </div>
+        <div className="form-group">
+          <button onClick={onSubmit} type="submit" className="btn btn-block">
+            Venmo
           </button>
         </div>
       </section>
@@ -47,4 +44,4 @@ function Order() {
   );
 }
 
-export default Order;
+export default Checkout;

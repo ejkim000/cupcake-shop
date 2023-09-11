@@ -11,6 +11,8 @@ import Items from '../pages/Items';
 import Cart from '../pages/Cart';
 import Order from '../pages/Order';
 import Item from '../pages/Item';
+import Checkout from '../pages/Checkout';
+import OrderComplete from '../pages/OrderComplete';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route path="/item/:id" element={<Item />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<Order />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order/complete" element={<OrderComplete />} />
           </Routes>
           <Footer />
         </div>
