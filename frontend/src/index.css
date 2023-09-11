@@ -191,7 +191,8 @@ nav {
   align-items: center;
 }
 .detail-desc img {
-  max-width: 450px;
+  max-width: 420px;
+  padding: 15px;
 }
 
 .detail-desc p {
