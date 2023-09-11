@@ -20,13 +20,18 @@ function Cart() {
     if (!savedCart || savedCart.length === 0) {
       // navigate('/');
       setEmptyCart('Cart is empty');
-      setHideTotal(' hide')
+      setHideTotal(' hide');
     }
 
     setCartItems(savedCart);
 
     // get total
-    setTotal(savedCart.reduce((acc, current) => acc + current.sub_total, 0));
+    setTotal(
+      savedCart.reduce(
+        (acc, current) => acc + current.sub_total * current.qty,
+        0
+      )
+    );
   }, [navigate]);
 
   useEffect(() => {

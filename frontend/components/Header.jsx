@@ -29,7 +29,7 @@ function Header() {
             <Link to="/items/design">Design</Link>
           </li>
           <li>
-            <Link to="/items/cake">BaseCake</Link>
+            <Link to="/items/cake">Cake</Link>
           </li>
           <li>
             <Link to="/items/frosting">Frosting</Link>

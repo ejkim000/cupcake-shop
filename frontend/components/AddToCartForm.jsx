@@ -19,6 +19,7 @@ function AddToCartForm({ id, name }) {
     cake: '',
     frosting: '',
     filling: '',
+    qty: 1
   });
   const [subTotal, setSubTotal] = useState(0);
   // Get save cart from localStorage
@@ -110,6 +111,22 @@ function AddToCartForm({ id, name }) {
     cart.length > savedCart.length && navigate('/cart');
   }, [cart, savedCart, navigate]);
 
+  // const qtyOptions = (num) => {
+  //   let content = [];
+  //   for (let i = 1; i <= num; i++) {
+  //     content.push(<option value={i}>{i}</option>);
+  //   }
+  //   return content;
+  // };
+
+  const qtyOptions = num => {
+    let content = [];
+    for (let i = 1; i <= num; i++) {
+      content.push(<option key={i} value={i}>{i}</option>);
+    }
+    return content;
+  };
+
   if (isLoading || isLoadingS) {
     return <Loading />;
   }
@@ -189,6 +206,16 @@ function AddToCartForm({ id, name }) {
                     {item.name}
                   </option>
                 ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label className="form-label">Select Quantity</label>
+          <select
+            name="qty"
+            value={formData.qty}
+            onChange={onChange}
+            className="form-control">
+            {qtyOptions(10)}
           </select>
         </div>
         <div className="form-group">

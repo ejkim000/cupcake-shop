@@ -47,8 +47,8 @@ function CartItem({ item, index }) {
         </ul>
       </div>
       <div className="item-info">
-        <p>Qty: 1</p>
-        <p>Price: ${item.sub_total}</p>
+        <p>Qty: {item.qty}</p>
+        <p>Price: ${item.sub_total * item.qty}</p>
         <p>
           <button onClick={onRemove} className="btn reverse small">
             Remove
