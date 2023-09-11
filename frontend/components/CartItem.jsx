@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function CartItem({ item, index }) {
   CartItem.propTypes = {
-    item: PropTypes.node.isRequired,
+    item: PropTypes.object.isRequired,
     index: PropTypes.node.isRequired,
   };
 

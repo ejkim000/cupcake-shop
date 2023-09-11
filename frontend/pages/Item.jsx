@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import AddToCartForm from '../components/AddToCartForm';
 
-function ItemDetail() {
+function Item() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { state } = useLocation();
@@ -41,4 +41,4 @@ function ItemDetail() {
   );
 }
 
-export default ItemDetail;
+export default Item;
