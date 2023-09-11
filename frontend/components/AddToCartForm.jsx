@@ -24,7 +24,9 @@ function AddToCartForm({ id, name }) {
   // Get save cart from localStorage
   const savedCart = JSON.parse(localStorage.getItem('cart'));
 
-  const [cart, setCart] = useState((savedCart && savedCart.length > 0) ? savedCart : []);
+  const [cart, setCart] = useState(
+    savedCart && savedCart.length > 0 ? savedCart : []
+  );
 
   const dispatch = useDispatch();
   const { items, isLoading, isError, message } = useSelector(
@@ -142,7 +144,7 @@ function AddToCartForm({ id, name }) {
             value={formData.cake}
             onChange={onChange}
             className="form-control">
-            <option value="">Please select filling</option>
+            <option value="">Please select cake</option>
             {cakes &&
               cakes
                 // .filter((cake) => cake.size === selectedSize)

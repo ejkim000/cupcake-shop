@@ -174,18 +174,28 @@ nav {
   flex-wrap: wrap;
 }
 
-.detail-image,
+.detail-desc,
 .detail-options {
   width: 50%;
   max-width: 500px;
   padding: 20px 10px;
 }
 
-.detail-image img {
-  max-width: 420px;
+.detail-desc.flex-row {
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-content: space-around;
+  align-items: center;
+}
+.detail-desc img {
+  max-width: 450px;
 }
 
-.detail-image p {
+.detail-desc p {
+  max-width: 450px;
   text-align: justify;
   padding: 20px;
 }
