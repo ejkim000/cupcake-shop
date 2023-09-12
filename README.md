@@ -4,11 +4,13 @@
 
 ### Welcome to Cupcake Shop!
 
-Please customize your cupcakes for your special day!
+> MERN E-cmmerce website **
 
-Pick your favorite one from our various cupcake designs.
+Customize your cupcakes for your special day!
 
-Create an account, start to order your cupcakes. 
+Pick your favorite one from our various cupcake designs and add cake, frosting, filling and size.
+
+Create your account, and start to order your cupcakes. 
 
 
 ![cupcakeshop,home](/frontend/src/assets/home.png)
@@ -17,13 +19,13 @@ Create an account, start to order your cupcakes.
 
 ## Technologies Used
 
-### MERN Stack + RESTful APIs
+#### MERN Stack + RESTful APIs
 1. MongoDB
 2. Express
 3. React (Vite)
 4. Node js
 
-### Libraries
+#### Libraries
 1. express-react-views
 2. react-dom 
 3. method-override 
@@ -40,8 +42,7 @@ Create an account, start to order your cupcakes.
 15. react-toastify
 
 ## Getting Started
-* Trello Board
-https://trello.com/b/7JnV79GX/cupcake-shop-mern-project
+* [Trello Board](https://trello.com/b/7JnV79GX/cupcake-shop-mern-project)
 
 ## Unsolved Problems
 * After update or delete account, the reduct doesn't update state well.
