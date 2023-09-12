@@ -129,15 +129,18 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route DELETE /api/users/delete
 // @access Private
 const deleteUser = asyncHandler(async (req, res) => {
+
   // check user from middleware
-  if (!req.user) {
+  if (!req.user || !req.params.id) {
     res.status(401);
     throw new Error('User not found');
   }
 
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) {
+
+  const user = await User.findById(req.params.id);
+
+  if (!user || email !== user.email) {
     res.status(400);
     throw new Error('User not exist!');
   }
@@ -146,9 +149,9 @@ const deleteUser = asyncHandler(async (req, res) => {
     // DELETE DB ACTION HERE!
 
     // LATER, DELETE ORDER HISTORY AS WELL
-    console.log(`message: ${user.email} was deleted`);
+    console.log(`message: ${user.email} was deleted!`);
 
-    res.status(200).json({ message: user.email + ' was deleted' });
+    res.status(200).json({message: user.email + ' was deleted.'});
   } else {
     res.status(400);
     throw new Error('Invalid credentials');

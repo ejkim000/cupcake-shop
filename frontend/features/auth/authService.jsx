@@ -55,12 +55,15 @@ const remove = async (userData, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    data: userData // add data here
   };
 
-  const res = await axios.delete(API_URL + 'delete', userData, config);
+  // Send delete request with data & header
+  const res = await axios.delete(API_URL + userData.id, config);
 
-  // Save in the localStorage
+  // remove localStorage
   if (res.data) {
+    console.log(res.data);
     localStorage.removeItem('cupcakeshop_user');
   }
 };

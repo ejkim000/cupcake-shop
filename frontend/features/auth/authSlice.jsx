@@ -71,11 +71,12 @@ export const update = createAsyncThunk(
 
 // DELETE
 export const remove = createAsyncThunk(
-  'auth/delete',
+  'auth/remove',
   async (user, thunkAPI) => {
     try {
       // By using thunkAPI, can access to all state
       const token = thunkAPI.getState().auth.user.token;
+
       //delete
       return await authService.remove(user, token);
     } catch (err) {
@@ -93,12 +94,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    reset: (state) => {
-      state.isLoading = false;
-      state.isSuccess = false;
-      state.isError = false;
-      state.message = '';
-    },
+    reset: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -149,10 +145,9 @@ export const authSlice = createSlice({
       .addCase(remove.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(remove.fulfilled, (state, action) => {
+      .addCase(remove.fulfilled, (state) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
       })
       .addCase(remove.rejected, (state, action) => {
         state.isLoading = false;

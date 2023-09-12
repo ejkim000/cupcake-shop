@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { update, remove, reset, logout } from '../features/auth/authSlice';
+import { update, remove, reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function UpdateAccount() {
@@ -16,6 +16,7 @@ function UpdateAccount() {
 
   const [hide, setHide] = useState(' hide');
   const [userEmail, setUserEmail] = useState('');
+  const [userId, setUserId] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -46,7 +47,7 @@ function UpdateAccount() {
         const userData = {
           name,
           email: userEmail,
-          password,
+          password
         };
 
         dispatch(update(userData));
@@ -68,13 +69,15 @@ function UpdateAccount() {
           name,
           email: userEmail,
           password,
+          id: userId
         };
 
         dispatch(remove(userData));
 
-        // dispatch(logout());
-        // dispatch(reset());
-        // navigate('/');
+        return () => {
+          navigate('/');
+        };
+        
       }
     }
   };
@@ -89,6 +92,7 @@ function UpdateAccount() {
       navigate('/login');
     } else {
       setUserEmail(user.email);
+      setUserId(user._id);
     }
 
     if (isError) {
