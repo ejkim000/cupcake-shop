@@ -5,8 +5,11 @@
 ### Welcome to Cupcake Shop!
 
 Please customize your cupcakes for your special day!
+
 Pick your favorite one from our various cupcake designs.
+
 Create an account, start to order your cupcakes. 
+
 
 ![cupcakeshop,home](/frontend/src/assets/home.png)
 
@@ -14,13 +17,13 @@ Create an account, start to order your cupcakes.
 
 ## Technologies Used
 
-* MERN Stack + RESTful APIs
+### MERN Stack + RESTful APIs
 1. MongoDB
 2. Express
 3. React (Vite)
 4. Node js
 
-* Libraries
+### Libraries
 1. express-react-views
 2. react-dom 
 3. method-override 
