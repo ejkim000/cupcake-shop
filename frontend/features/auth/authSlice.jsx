@@ -93,8 +93,13 @@ export const remove = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    reset: () => initialState,
+  reducers: { // leave as below to show state updates
+    reset: (state) => {
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = '';
+    },
   },
   extraReducers: (builder) => {
     builder

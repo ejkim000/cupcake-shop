@@ -47,11 +47,10 @@ function UpdateAccount() {
         const userData = {
           name,
           email: userEmail,
-          password
+          password,
         };
 
         dispatch(update(userData));
-
         navigate('/myaccount');
       }
     }
@@ -69,15 +68,11 @@ function UpdateAccount() {
           name,
           email: userEmail,
           password,
-          id: userId
+          id: userId,
         };
 
         dispatch(remove(userData));
-
-        return () => {
-          navigate('/');
-        };
-        
+        navigate('/');
       }
     }
   };
