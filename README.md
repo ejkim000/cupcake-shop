@@ -1,6 +1,7 @@
 # Cupcake Shop
-#### MERN E-cmmerce website with Redux
+#### MERN-stack E-cmmerce website with Redux
 #### User Authentication with JWT
+
 
 ## Introduction
 
@@ -19,11 +20,11 @@ Create your account, and start to order your cupcakes.
 
 ## Technologies Used
 
-#### MERN Stack + RESTful APIs
-1. MongoDB
+#### MERN-stack + RESTful APIs
+1. MongoDB / Mongoose
 2. Express
 3. React (Vite)
-4. Node js
+4. Node
 
 #### Libraries
 1. express-react-views
