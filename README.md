@@ -2,9 +2,11 @@
 
 ## Introduction
 
-### Welcome to Cupcake Shop!
+#### MERN E-cmmerce website with Redux
+#### User Authentication with JWT
 
-#### MERN E-cmmerce website 
+
+### Welcome to Cupcake Shop!
 
 Customize your cupcakes for your special day!
 
@@ -43,6 +45,7 @@ Create your account, and start to order your cupcakes.
 
 ## Getting Started
 * [Trello Board](https://trello.com/b/7JnV79GX/cupcake-shop-mern-project)
+* [Link : only for the presentation](http://localhost:3031/)
 
 ## Unsolved Problems
 * After update or delete account, the reduct doesn't update state well.
