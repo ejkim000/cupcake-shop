@@ -4,7 +4,7 @@
 
 ### Welcome to Cupcake Shop!
 
-> MERN E-cmmerce website **
+#### MERN E-cmmerce website 
 
 Customize your cupcakes for your special day!
 
