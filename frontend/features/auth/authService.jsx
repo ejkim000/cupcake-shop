@@ -66,6 +66,7 @@ const remove = async (userData, token) => {
     localStorage.removeItem('cupcakeshop_user');
   }
 
+  console.log(res.data)
   return res.data;
 };
 

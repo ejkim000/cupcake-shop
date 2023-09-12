@@ -25,7 +25,7 @@ function UpdateAccount() {
     password2: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, password, password2 } = formData;
 
   const onChange = (e) => {
     setFormData((prev) => ({
@@ -71,6 +71,7 @@ function UpdateAccount() {
           id: userId,
         };
 
+        // call remove data
         dispatch(remove(userData));
         navigate('/login');
       }

@@ -24,7 +24,7 @@ function MyAccount() {
   // there are many ways to handle auth, this is one of them
   useEffect(() => {
     if (!user) {
-      navigate('/login');
+      navigate('/');
     } else {
       setUserEmail(user.email);
       setUserName(user.name);
