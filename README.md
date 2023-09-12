@@ -44,8 +44,9 @@ Create your account, and start to order your cupcakes.
 15. react-toastify
 
 ## Getting Started
-* [Trello Board](https://trello.com/b/7JnV79GX/cupcake-shop-mern-project)
+* [Trello Board : shared link](https://trello.com/invite/b/7JnV79GX/ATTI104d9557d4232b9a22eee497b7d94956A3AC36EA/cupcake-shop-mern-project)
 * [Link : only for the presentation](http://localhost:3031/)
+
 
 ## Unsolved Problems
 * After update or delete account, the reduct doesn't update state well.
