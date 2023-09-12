@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { signup, reset } from '../features/auth/authSlice';
+import { update, remove, reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function UpdateAccount() {
@@ -22,6 +22,8 @@ function UpdateAccount() {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+
+  const [hide, setHide] = useState(' hide');
 
   // there are many ways to handle auth, this is one of them
   useEffect(() => {
@@ -44,8 +46,29 @@ function UpdateAccount() {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onUpdate = (e) => {
     e.preventDefault();
+
+    if (!name || !email || !password || !password2) {
+      toast.error('Please input all information');
+    }
+
+    if (password !== password2) {
+      toast.error('Passwords do not match');
+    } else {
+      const userData = {
+        name,
+        email,
+      };
+
+      dispatch(update(userData));
+    }
+  };
+
+  const onDelete = () => {
+    if (!name || !email || !password || !password2) {
+      toast.error('Please input all information');
+    }
 
     if (password !== password2) {
       toast.error('Passwords do not match');
@@ -56,14 +79,19 @@ function UpdateAccount() {
         password,
       };
 
-      dispatch(signup(userData));
+      dispatch(remove(userData));
     }
+  };
+
+  const showDeleteMsg = () => {
+    setHide('');
   };
 
   // Show spinner while loading
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <>
       <section className="heading">
@@ -71,14 +99,13 @@ function UpdateAccount() {
         <p>Please fill out the form</p>
       </section>
       <section className="form">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onUpdate}>
           <div className="form-group">
             <input
               type="text"
               className="form-control"
               id="name"
               name="name"
-              value={user.name}
               placeholder="Enter name"
               onChange={onChange}
             />
@@ -89,7 +116,6 @@ function UpdateAccount() {
               className="form-control"
               id="email"
               name="email"
-              value={user.email}
               placeholder="Enter email"
               onChange={onChange}
             />
@@ -100,7 +126,6 @@ function UpdateAccount() {
               className="form-control"
               id="password"
               name="password"
-              value={password}
               placeholder="Enter password"
               onChange={onChange}
             />
@@ -111,17 +136,30 @@ function UpdateAccount() {
               className="form-control"
               id="password2"
               name="password2"
-              value={password2}
               placeholder="Confirm password"
               onChange={onChange}
             />
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
-              Submit
+              Update
             </button>
           </div>
         </form>
+        <div>
+          <button onClick={showDeleteMsg} className="btn reverse btn-block">
+            Delete Account
+          </button>
+          <div className={`delete-msg${hide}`}>
+            <p>
+              Are you sure to delete your account? <br />
+              Your all order information will be deleted as well.
+            </p>
+            <button onClick={onDelete} className="btn red btn-block">
+              Confirm and Delete
+            </button>
+          </div>
+        </div>
       </section>
     </>
   );

@@ -30,10 +30,33 @@ const logout = () => {
   localStorage.removeItem('cupcakeshop_user');
 };
 
+// UPDATE
+const update = async (userData) => {
+  const res = await axios.post(API_URL + 'update', userData);
+  
+  // Save in the localStorage
+  if (res.data) {
+    localStorage.setItem('cupcakeshop_user', JSON.stringify(res.data));
+  }
+  return res.data;
+};
+
+// DELETE
+const remove = async (userData) => {
+  const res = await axios.post(API_URL + 'delete', userData);
+  
+  // Save in the localStorage
+  if (res.data) {
+    localStorage.removeItem('cupcakeshop_user');
+  }
+};
+
 const authService = {
   signup,
   login,
   logout,
+  update,
+  remove
 };
 
 export default authService;

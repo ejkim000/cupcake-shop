@@ -360,6 +360,11 @@ h1.cute {
   border: 1px solid #513724;
   border-radius: 10px;
 }
+.delete-msg {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: red;
+}
 
 /* FORM */
 .form,
@@ -443,6 +448,9 @@ h1.cute {
 
 .btn:hover {
   transform: scale(1.05);
+}
+.btn.red {
+  background: red;
 }
 
 .loadingSpinnerContainer {
