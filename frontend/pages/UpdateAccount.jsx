@@ -72,7 +72,7 @@ function UpdateAccount() {
         };
 
         dispatch(remove(userData));
-        navigate('/');
+        navigate('/login');
       }
     }
   };
@@ -94,6 +94,10 @@ function UpdateAccount() {
       toast.error(message);
     }
 
+    if (isSuccess) {
+      toast.done(message);
+    }
+
     // dispatch can call actions from reducer
     return () => {
       dispatch(reset());
@@ -108,13 +112,13 @@ function UpdateAccount() {
   return (
     <>
       <section className="heading">
-        <h1>Update Account</h1>
+        <h1>Update My Account</h1>
         <p>Please fill out the form</p>
       </section>
       <section className="form">
         <form onSubmit={onUpdate}>
           <div className="form-group">
-            <label>* Cannot update email</label>
+            <label>* Your email stays same</label>
             <input
               type="email"
               className="form-control"

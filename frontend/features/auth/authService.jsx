@@ -55,17 +55,18 @@ const remove = async (userData, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    data: userData // add data here
+    data: userData, // add data here
   };
 
   // Send delete request with data & header
   const res = await axios.delete(API_URL + userData.id, config);
 
   // remove localStorage
-  if (res.data) {
-    console.log(res.data);
+  if (res.status === 200 && res.data) {
     localStorage.removeItem('cupcakeshop_user');
   }
+
+  return res.data;
 };
 
 const authService = {

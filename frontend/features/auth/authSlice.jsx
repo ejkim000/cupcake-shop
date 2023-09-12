@@ -150,9 +150,11 @@ export const authSlice = createSlice({
       .addCase(remove.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(remove.fulfilled, (state) => {
+      .addCase(remove.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.message = action.payload.message;
+        console.log(action.payload.message);
       })
       .addCase(remove.rejected, (state, action) => {
         state.isLoading = false;

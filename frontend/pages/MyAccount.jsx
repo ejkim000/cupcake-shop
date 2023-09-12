@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
@@ -14,6 +14,9 @@ function MyAccount() {
     (state) => state.auth
   );
 
+  const [userEmail, setUserEmail] = useState('');
+  const [userName, setUserName] = useState('');
+
   const updateAccount = () => {
     navigate('/myaccount/update');
   };
@@ -22,6 +25,9 @@ function MyAccount() {
   useEffect(() => {
     if (!user) {
       navigate('/login');
+    } else {
+      setUserEmail(user.email);
+      setUserName(user.name);
     }
 
     if (isError) {
@@ -46,10 +52,10 @@ function MyAccount() {
           <h3>My Account Infomation</h3>
           <div className="box">
             <p>
-              Name: <span>{user.name}</span>
+              Name: <span>{userName}</span>
             </p>
             <p>
-              Email: <span>{user.email}</span>
+              Email: <span>{userEmail}</span>
             </p>
             <button onClick={updateAccount} className="btn small">
               Update Information
