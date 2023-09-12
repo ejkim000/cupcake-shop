@@ -102,8 +102,6 @@ const updateUser = asyncHandler(async (req, res) => {
     throw new Error('Please add a name field');
   }
 
-  console.log(req.body);
-
   if (user && (await bcrypt.compare(password, user.password))) {
     // UPDATE user : for now, upadte only name
     const updatedUser = await User.findByIdAndUpdate(
@@ -148,6 +146,7 @@ const deleteUser = asyncHandler(async (req, res) => {
     // DELETE DB ACTION HERE!
 
     // LATER, DELETE ORDER HISTORY AS WELL
+    console.log(`message: ${user.email} was deleted`);
 
     res.status(200).json({ message: user.email + ' was deleted' });
   } else {

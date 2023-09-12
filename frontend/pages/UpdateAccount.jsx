@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { update, remove, reset } from '../features/auth/authSlice';
+import { update, remove, reset, logout } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function UpdateAccount() {
@@ -15,9 +15,11 @@ function UpdateAccount() {
   );
 
   const [hide, setHide] = useState(' hide');
+  const [userEmail, setUserEmail] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
-    email: user.email,
+    email: userEmail,
     password: '',
     password2: '',
   });
@@ -35,41 +37,45 @@ function UpdateAccount() {
   const onUpdate = (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !password2) {
+    if (!name || !password || !password2) {
       toast.error('Please input all information');
-    }
-
-    if (password !== password2) {
-      toast.error('Passwords do not match');
     } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
+      if (password !== password2) {
+        toast.error('Passwords do not match');
+      } else {
+        const userData = {
+          name,
+          email: userEmail,
+          password,
+        };
 
-      console.log(userData);
-      dispatch(update(userData));
+        dispatch(update(userData));
+
+        navigate('/myaccount');
+      }
     }
-
   };
 
   // Delete user
   const onDelete = () => {
-    if (!name || !email || !password || !password2) {
+    if (!name || !password || !password2) {
       toast.error('Please input all information');
-    }
-
-    if (password !== password2) {
-      toast.error('Passwords do not match');
     } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
+      if (password !== password2) {
+        toast.error('Passwords do not match');
+      } else {
+        const userData = {
+          name,
+          email: userEmail,
+          password,
+        };
 
-      dispatch(remove(userData));
+        dispatch(remove(userData));
+
+        // dispatch(logout());
+        // dispatch(reset());
+        // navigate('/');
+      }
     }
   };
 
@@ -81,6 +87,8 @@ function UpdateAccount() {
   useEffect(() => {
     if (!user) {
       navigate('/login');
+    } else {
+      setUserEmail(user.email);
     }
 
     if (isError) {
@@ -88,7 +96,9 @@ function UpdateAccount() {
     }
 
     // dispatch can call actions from reducer
-    dispatch(reset());
+    return () => {
+      dispatch(reset());
+    };
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   // Show spinner while loading
@@ -111,7 +121,7 @@ function UpdateAccount() {
               className="form-control"
               id="email"
               name="email"
-              value={user.email}
+              value={userEmail}
               onChange={onChange}
             />
           </div>
