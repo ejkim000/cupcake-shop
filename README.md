@@ -1,10 +1,8 @@
 # Cupcake Shop
-
-## Introduction
-
 #### MERN E-cmmerce website with Redux
 #### User Authentication with JWT
 
+## Introduction
 
 ### Welcome to Cupcake Shop!
 
