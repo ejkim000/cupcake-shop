@@ -17,7 +17,7 @@ function Home() {
             <h2>Wedding</h2>
             <h2>Anniversary</h2>
             <h2>Mother&apos;s Day</h2>
-            <h2>Special Event</h2>
+            <h2>Special Events</h2>
             <h2>
               <button className="btn lg center" onClick={onClick}>
                 Make Your Own Cupcakes

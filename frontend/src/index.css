@@ -311,6 +311,8 @@ h1.cute {
   justify-content: space-evenly;
   /* align-content: center; */
   align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .order-form {

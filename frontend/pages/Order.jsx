@@ -29,7 +29,7 @@ function Order() {
     <>
       <section className="heading">
         <h1>My Order</h1>
-        <p>Please fill out information</p>
+        <p></p>
       </section>
       <section className="flex-space-even">
         {/* <OrderItems /> */}
