@@ -17,7 +17,7 @@ const signup = async (userData) => {
 // LOGIN
 const login = async (userData) => {
   const res = await axios.post(API_URL + 'login', userData);
-  
+
   // Save in the localStorage
   if (res.data) {
     localStorage.setItem('cupcakeshop_user', JSON.stringify(res.data));
@@ -31,9 +31,16 @@ const logout = () => {
 };
 
 // UPDATE
-const update = async (userData) => {
-  const res = await axios.post(API_URL + 'update', userData);
-  
+const update = async (userData, token) => {
+  // set token in header
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const res = await axios.put(API_URL + 'update', userData, config);
+
   // Save in the localStorage
   if (res.data) {
     localStorage.setItem('cupcakeshop_user', JSON.stringify(res.data));
@@ -42,9 +49,16 @@ const update = async (userData) => {
 };
 
 // DELETE
-const remove = async (userData) => {
-  const res = await axios.post(API_URL + 'delete', userData);
-  
+const remove = async (userData, token) => {
+  // set token in header
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const res = await axios.delete(API_URL + 'delete', userData, config);
+
   // Save in the localStorage
   if (res.data) {
     localStorage.removeItem('cupcakeshop_user');
@@ -56,7 +70,7 @@ const authService = {
   login,
   logout,
   update,
-  remove
+  remove,
 };
 
 export default authService;

@@ -97,17 +97,19 @@ const updateUser = asyncHandler(async (req, res) => {
     throw new Error('User not exist!');
   }
 
-  if (!req.body.name) {
+  if (!name) {
     res.status(400);
     throw new Error('Please add a name field');
   }
+
+  console.log(req.body);
 
   if (user && (await bcrypt.compare(password, user.password))) {
     // UPDATE user : for now, upadte only name
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
       {
-        name: req.body.name,
+        name: name,
       },
       { new: true }
     );

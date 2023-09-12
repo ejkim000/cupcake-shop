@@ -6,15 +6,6 @@ import { update, remove, reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function UpdateAccount() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
-  });
-
-  const { name, email, password, password2 } = formData;
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,20 +15,14 @@ function UpdateAccount() {
   );
 
   const [hide, setHide] = useState(' hide');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: user.email,
+    password: '',
+    password2: '',
+  });
 
-  // there are many ways to handle auth, this is one of them
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-    }
-
-    if (isError) {
-      toast.error(message);
-    }
-
-    // dispatch can call actions from reducer
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  const { name, email, password, password2 } = formData;
 
   const onChange = (e) => {
     setFormData((prev) => ({
@@ -46,6 +31,7 @@ function UpdateAccount() {
     }));
   };
 
+  // Update user
   const onUpdate = (e) => {
     e.preventDefault();
 
@@ -59,12 +45,16 @@ function UpdateAccount() {
       const userData = {
         name,
         email,
+        password,
       };
 
+      console.log(userData);
       dispatch(update(userData));
     }
+
   };
 
+  // Delete user
   const onDelete = () => {
     if (!name || !email || !password || !password2) {
       toast.error('Please input all information');
@@ -87,6 +77,20 @@ function UpdateAccount() {
     setHide('');
   };
 
+  // there are many ways to handle auth, this is one of them
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+
+    if (isError) {
+      toast.error(message);
+    }
+
+    // dispatch can call actions from reducer
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   // Show spinner while loading
   if (isLoading) {
     return <Loading />;
@@ -101,22 +105,23 @@ function UpdateAccount() {
       <section className="form">
         <form onSubmit={onUpdate}>
           <div className="form-group">
+            <label>* Cannot update email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={user.email}
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
             <input
               type="text"
               className="form-control"
               id="name"
               name="name"
               placeholder="Enter name"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              placeholder="Enter email"
               onChange={onChange}
             />
           </div>

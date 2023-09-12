@@ -50,32 +50,44 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 });
 
 // UPDATE
-export const update = createAsyncThunk('auth/update', async (user, thunkAPI) => {
-  try {
-    return await authService.update(user);
-  } catch (err) {
-    const message =
-      (err.response && err.response.data && err.response.data.message) ||
-      err.message ||
-      err.toString();
+export const update = createAsyncThunk(
+  'auth/update',
+  async (user, thunkAPI) => {
+    try {
+      // By using thunkAPI, can access to all state
+      const token = thunkAPI.getState().auth.user.token;
+      // update
+      return await authService.update(user, token);
+    } catch (err) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
 
-    return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 // DELETE
-export const remove = createAsyncThunk('auth/delete', async (user, thunkAPI) => {
-  try {
-    return await authService.remove(user);
-  } catch (err) {
-    const message =
-      (err.response && err.response.data && err.response.data.message) ||
-      err.message ||
-      err.toString();
+export const remove = createAsyncThunk(
+  'auth/delete',
+  async (user, thunkAPI) => {
+    try {
+      // By using thunkAPI, can access to all state
+      const token = thunkAPI.getState().auth.user.token;
+      //delete
+      return await authService.remove(user, token);
+    } catch (err) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
 
-    return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -132,7 +144,6 @@ export const authSlice = createSlice({
       .addCase(update.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.user = null;
         state.message = action.payload;
       })
       .addCase(remove.pending, (state) => {
@@ -146,7 +157,6 @@ export const authSlice = createSlice({
       .addCase(remove.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.user = null;
         state.message = action.payload;
       });
   },
