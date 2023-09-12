@@ -1,7 +1,8 @@
 # Cupcake Shop
-#### MERN-stack E-cmmerce website with Redux
+#### MERN-stack, e-commerce website with Redux
+#### A functioning full-stack, multi-page application
+#### Express backend & Vite frontend
 #### User Authentication with JWT
-
 
 ## Introduction
 
@@ -9,7 +10,7 @@
 
 Customize your cupcakes for your special day!
 
-Pick your favorite one from our various cupcake designs and add cake, frosting, filling and size.
+Pick your favorite one from our various cupcake designs and add options of cake, frosting, filling and size.
 
 Create your account, and start to order your cupcakes. 
 
