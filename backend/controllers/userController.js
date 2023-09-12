@@ -138,20 +138,21 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   const { email, password } = req.body;
 
-  const user = await User.findById(req.params.id);
+  const foundUser = await User.findById(req.params.id);
 
-  if (!user || email !== user.email) {
+  if (!foundUser || email !== foundUser.email) {
     res.status(400);
     throw new Error('User not exist!');
   }
 
-  if (user && (await bcrypt.compare(password, user.password))) {
+  if (foundUser && (await bcrypt.compare(password, foundUser.password))) {
     // DELETE DB ACTION HERE!
-
+    await foundUser.deleteOne();
+    
     // LATER, DELETE ORDER HISTORY AS WELL
-    console.log(`message: ${user.email} was deleted!`);
+    console.log(`message: ${foundUser.email} was deleted!`);
 
-    res.status(200).json({message: user.email + ' was deleted.'});
+    res.status(200).json({message: foundUser.email + ' was deleted.'});
   } else {
     res.status(400);
     throw new Error('Invalid credentials');
