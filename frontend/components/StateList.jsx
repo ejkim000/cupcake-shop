@@ -1,6 +1,6 @@
-function StateList({ state }) {
+function StateList({ state, updateValue }) {
   return (
-    <select name="state" value={state}>
+    <select name="state" value={state} onChange={updateValue} required>
       <option value="">Select State</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
