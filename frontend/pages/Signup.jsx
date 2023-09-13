@@ -6,24 +6,22 @@ import { signup, reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function Signup() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     password2: '',
   });
-
   const { name, email, password, password2 } = formData;
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // use useSlector hook to get stored reducer in store.js
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
-  // there are many ways to handle auth, this is one of them
+  // There are many ways to handle auth, this is one of them
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -47,16 +45,23 @@ function Signup() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== password2) {
-      toast.error('Passwords do not match');
+    // Check all informations were input
+    if (!name || !email || !password || !password2) {
+      toast.error('Please input all information');
     } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
+      // Compare password
+      if (password !== password2) {
+        toast.error('Passwords do not match');
+      } else {
+        const userData = {
+          name,
+          email,
+          password,
+        };
 
-      dispatch(signup(userData));
+        // Call singup action
+        dispatch(signup(userData));
+      }
     }
   };
 

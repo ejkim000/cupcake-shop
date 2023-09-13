@@ -38,9 +38,12 @@ function UpdateAccount() {
   const onUpdate = (e) => {
     e.preventDefault();
 
+    // Check all informations were input
     if (!name || !password || !password2) {
       toast.error('Please input all information');
     } else {
+
+      // Compare password
       if (password !== password2) {
         toast.error('Passwords do not match');
       } else {
@@ -50,6 +53,7 @@ function UpdateAccount() {
           password,
         };
 
+        // Call update action
         dispatch(update(userData));
         navigate('/myaccount');
       }
@@ -58,9 +62,12 @@ function UpdateAccount() {
 
   // Delete user
   const onDelete = () => {
+
+    // Check all informations were input
     if (!name || !password || !password2) {
       toast.error('Please input all information');
     } else {
+      // Compare password
       if (password !== password2) {
         toast.error('Passwords do not match');
       } else {
@@ -71,7 +78,7 @@ function UpdateAccount() {
           id: userId,
         };
 
-        // call remove data
+        // Call remove action
         dispatch(remove(userData));
         navigate('/login');
       }

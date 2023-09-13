@@ -8,16 +8,20 @@ function CartItem({ item, index }) {
     index: PropTypes.node.isRequired,
   };
 
+  const navigate = useNavigate();
+
+  // Get cart items from localStorage
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem('cart'))
   );
-  const navigate = useNavigate();
 
+  // Remove selected item from cart
   const onRemove = () => {
     setCartItems((prev) => prev.filter((itm, idx) => idx !== index));
-    navigate(0); // refersh page
+    navigate(0); // *** refersh page
   };
 
+  // Update cart when cart item changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);

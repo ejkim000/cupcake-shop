@@ -1,23 +1,4 @@
-import { useState } from 'react';
-
 function Payment() {
-  const [formData, setFormData] = useState({
-    name: '',
-    street: '',
-    street2: '',
-    city: '',
-    state: '',
-    zipcode: '',
-  });
-
-  const { name, street, street2, city, state, zipcode } = formData;
-
-  const onChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();

@@ -25,7 +25,7 @@ function Cart() {
 
     setCartItems(savedCart);
 
-    // get total
+    // Get total
     setTotal(
       savedCart.reduce(
         (acc, current) => acc + current.sub_total * current.qty,

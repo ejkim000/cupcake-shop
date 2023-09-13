@@ -4,6 +4,7 @@ import AddToCartForm from '../components/AddToCartForm';
 function Item() {
   const navigate = useNavigate();
   const { id } = useParams();
+  // Receive state from ItemCard component
   const { state } = useLocation();
 
   if (!id || !state) {

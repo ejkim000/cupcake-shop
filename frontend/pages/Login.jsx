@@ -6,34 +6,34 @@ import { login, reset } from '../features/auth/authSlice';
 import Loading from '../components/Loading';
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
   const { email, password } = formData;
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+  // Get user state
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
-    if(isError) {
-        toast.error(message);
-      }
-  
-      if(isSuccess || user) {
-        navigate('/');
-      }
+    if (isError) {
+      toast.error(message);
+    }
 
-          // reset after above actions
+    if (isSuccess || user) {
+      navigate('/');
+    }
+
+    // Reset after above actions
     dispatch(reset());
-  
-  },[user, isLoading, isError, isSuccess, message, navigate, dispatch])
+  }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
 
+  // Set changed data to formData
   const onChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -41,14 +41,15 @@ function Login() {
     }));
   };
 
+  // Call login function from auth slice
   const onSubmit = (e) => {
     e.preventDefault();
-
+    
     dispatch(login(formData));
   };
-  
+
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (

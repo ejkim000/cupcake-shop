@@ -9,11 +9,11 @@ function MyAccount() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // use useSlector hook to get stored reducer in store.js
+  // Use useSlector hook to get stored reducer in store.js
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
-
+  // Use useState for to prevent undefined user error when accedss w/o login
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
 
@@ -21,11 +21,12 @@ function MyAccount() {
     navigate('/myaccount/update');
   };
   
-  // there are many ways to handle auth, this is one of them
+  // There are many ways to handle auth, this is one of them
   useEffect(() => {
     if (!user) {
       navigate('/');
     } else {
+      // Set user email and name to show on the page
       setUserEmail(user.email);
       setUserName(user.name);
     }
@@ -34,7 +35,7 @@ function MyAccount() {
       toast.error(message);
     }
 
-    // dispatch can call actions from reducer
+    // Call rest action
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
