@@ -58,7 +58,7 @@ export const update = createAsyncThunk(
       // By using thunkAPI, can access to all state
       const token = thunkAPI.getState().auth.user.token;
       // update
-      await authService.update(user, token);
+      return await authService.update(user, token);
     } catch (err) {
       const message =
         (err.response && err.response.data && err.response.data.message) ||
@@ -143,7 +143,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
-        //alert('Your information was updated.');
         toast.success('Your information was updated.');
       })
       .addCase(update.rejected, (state, action) => {
@@ -158,6 +157,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload.message;
+        state.user = null;
         toast.success(state.message);
       })
       .addCase(remove.rejected, (state, action) => {
