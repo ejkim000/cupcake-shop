@@ -8,16 +8,14 @@
 
 ### Welcome to Cupcake Shop!
 
-Customize your cupcakes for your special day!
-
-Pick your favorite one from our various cupcake designs and add options of cake, frosting, filling and size.
-
-Create your account, and start to order your cupcakes. 
+Welcome to my Cupcake Shop E-Commerce project, a mouthwatering online store where you can satisfy your sweet tooth with the most delightful cupcakes! 
+Pick your favorite one from our various cupcake designs and add options of cake, frosting, filling and size. Create your account, and start to order your cupcakes!
 
 
 ![cupcakeshop,home](/frontend/src/assets/home.png)
 
 ![cupcakeshop,item-detail](/frontend/src/assets/item-detail.png)
+
 
 ## Technologies Used
 
@@ -44,14 +42,17 @@ Create your account, and start to order your cupcakes.
 15. react-toastify
 
 ## Getting Started
-* [Trello Board : shared link](https://trello.com/invite/b/7JnV79GX/ATTI104d9557d4232b9a22eee497b7d94956A3AC36EA/cupcake-shop-mern-project)
+* [Trello Board : shared link](https://trello.com/invite/b/7JnV79GX/ATTI104d9557d4232b9a22eee497b7d94956A3AC36EA/cupcake-shop-mern-project) : Visit our Trello board to see the project planning and progress.
+
 * [Link : only for the presentation](http://localhost:3031/)
 
 
 ## Unsolved Problems
-* After update or delete account, the reduct doesn't update state well.
+* Cupcake image upload
+* Update order model for effective order process
 
 ## Future Enhancements
 * Connect Shopping Cart & Order to DB
+* Apply PayPal & Venmo module
 * Make admin UI and connect to DB
 * Create mobile View
