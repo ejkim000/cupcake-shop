@@ -17,7 +17,7 @@ function Order() {
   }, [user, navigate]);
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>My Order</h1>
         <p></p>
@@ -27,7 +27,7 @@ function Order() {
         <ShippingAddress/>
         {/* <BillingAddress /> */}
       </section>
-    </>
+    </div>
   );
 }
 

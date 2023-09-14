@@ -12,6 +12,14 @@ body {
   color: #513724;
 }
 
+#root {
+  min-height: 100vh;
+}
+
+.container {
+  min-height: calc(100vh - 203px); 
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -51,7 +59,7 @@ h2 {
   border-bottom: 1px solid #f29eb0;
   background-color: #fff2fa;
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 nav {
@@ -137,7 +145,7 @@ nav {
   background: url(./assets/sprinkles.png);
 }
 .home-main {
-  padding: 90px 30px 60px;
+  padding: 120px 30px 60px;
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -147,29 +155,28 @@ h1.cute {
 
 .bubble-container {
   max-width: 1000px;
-  margin: -20px auto 40px;
-
+  margin: 0 auto 30px;
 }
 .speech-bubble {
-	position: relative;
-	background: #89E0E0;
-	border-radius: 5rem;
+  position: relative;
+  background: #89e0e0;
+  border-radius: 5rem;
   padding: 20px;
 }
 
 .speech-bubble:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 40%;
-	width: 0;
-	height: 0;
-	border: 45px solid transparent;
-	border-top-color: #89E0E0;
-	border-bottom: 0;
-	border-right: 0;
-	margin-left: -22.5px;
-	margin-bottom: -45px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  width: 0;
+  height: 0;
+  border: 45px solid transparent;
+  border-top-color: #89e0e0;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -22.5px;
+  margin-bottom: -45px;
 }
 
 .container-center {
@@ -478,11 +485,12 @@ h1.cute {
 footer {
   background-color: #f9e2c7;
   width: 100%;
-  margin: 20px 0 0;
+  margin-top: 20px 0 0;
   padding: 10px;
   font-size: 0.9rem;
+  height: 46px;
   /* position: absolute; */
-  bottom: 0;
+  /* bottom: 0; */
 }
 
 .hide {

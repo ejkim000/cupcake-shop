@@ -25,7 +25,7 @@ function Items() {
   }
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
       </section>
@@ -39,7 +39,7 @@ function Items() {
               })}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

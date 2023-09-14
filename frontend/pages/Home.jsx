@@ -6,7 +6,7 @@ function Home() {
     navigate('/items/design');
   };
   return (
-    <>
+    <div className="container">
       <section className="heading bubble-container">
         <h1 className="speech-bubble">Welcome to Cupcake Shop</h1>
       </section>
@@ -26,7 +26,7 @@ function Home() {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 

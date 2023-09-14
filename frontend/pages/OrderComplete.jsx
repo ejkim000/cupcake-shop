@@ -14,7 +14,7 @@ function OrderComplete() {
   }, [user, navigate]);
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>Order Completed!</h1>
         <p></p>
@@ -26,7 +26,7 @@ function OrderComplete() {
 
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

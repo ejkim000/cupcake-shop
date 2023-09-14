@@ -44,7 +44,7 @@ function MyAccount() {
     return <Loading />;
   }
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>My Account</h1>
       </section>
@@ -84,7 +84,7 @@ function MyAccount() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

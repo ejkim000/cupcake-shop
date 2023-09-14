@@ -118,7 +118,7 @@ function UpdateAccount() {
   }
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>Update My Account</h1>
         <p>Please fill out the form</p>
@@ -187,7 +187,7 @@ function UpdateAccount() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

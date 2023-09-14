@@ -23,7 +23,7 @@ function Checkout() {
   }, [user]);
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>Checkout</h1>
         <p>Please select your payment option</p>
@@ -40,7 +40,7 @@ function Checkout() {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

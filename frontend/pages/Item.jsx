@@ -14,7 +14,7 @@ function Item() {
   const flexDir = item.category === 'design' ? '' : ' flex-row';
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>{item.name}</h1>
       </section>
@@ -38,7 +38,7 @@ function Item() {
           </div>
         )}
       </section>
-    </>
+    </div>
   );
 }
 

@@ -41,7 +41,7 @@ function Cart() {
   }, [total, tax]);
 
   return (
-    <>
+    <div className="container">
       <section className="heading">
         <h1>My Cart</h1>
         <p>{emptyCart}</p>
@@ -68,7 +68,7 @@ function Cart() {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 
