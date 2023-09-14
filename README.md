@@ -42,7 +42,7 @@ Pick your favorite one from our various cupcake designs and add options of cake,
 15. react-toastify
 
 ## Getting Started
-* [Trello Board](https://trello.com/b/7JnV79GX/cupcake-shop-mern-project) : Visit our Trello board to see the project planning and progress.
+* [Trello Board](https://trello.com/b/7JnV79GX/cupcake-shop-mern-project)
 
 * [Localhost Link : only for the presentation](http://localhost:3031/)
 
